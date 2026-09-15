@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo 2026 - Brinquedos para Festas</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #333; }
+  
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #ff6b6b, #ffa500);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+  .logo { font-size: 24px; font-weight: bold; color: #fff; }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  nav a:hover { color: #ffe600; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+  }
+  .hero .ano {
+    display: inline-block;
+    background: #ffdd00;
+    color: #333;
+    padding: 8px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+  .hero h1 { font-size: 42px; margin-bottom: 15px; }
+  .hero p { font-size: 18px; margin-bottom: 25px; }
+  .hero .aviso {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 16px;
+    border: 2px solid #fff;
+  }
+
+  /* REGRAS DE TEMPO */
+  .regras {
+    background: #fff;
+    max-width: 1200px;
+    margin: -30px auto 30px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 10;
+  }
+  .regras h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  .regras-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .regra-item {
+    text-align: center;
+    padding: 25px;
+    border-radius: 15px;
+    background: #f8f9ff;
+    border: 2px dashed #4facfe;
+  }
+  .regra-item .icone { font-size: 40px; margin-bottom: 10px; }
+  .regra-item h4 { color: #4facfe; font-size: 16px; margin-bottom: 8px; }
+  .regra-item p { color: #666; font-size: 14px; line-height: 1.5; }
+  .regra-item.destaque { background: #fff5e6; border-color: #ffa500; }
+  .regra-item.destaque h4 { color: #d35400; }
+
+  /* SEÇÕES */
+  .secao {
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .secao-titulo {
+    font-size: 30px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .secao-subtitulo {
+    color: #7f8c8d;
+    margin-bottom: 25px;
+    font-size: 15px;
+  }
+  .secao-divisor {
+    height: 4px;
+    width: 80px;
+    background: linear-gradient(90deg, #ff6b6b, #ffa500);
+    border-radius: 2px;
+    margin-bottom: 30px;
+  }
+
+  /* TABELAS */
+  .tabela-precos {
+    width: 100%;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+    overflow-x: auto;
+  }
+  .tabela-precos table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+  }
+  .tabela-precos thead {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+  }
+  .tabela-precos th {
+    padding: 15px 12px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .tabela-precos th small {
+    display: block;
+    font-weight: normal;
+    font-size: 11px;
+    opacity: 0.85;
+    margin-top: 3px;
+  }
+  .tabela-precos td {
+    padding: 15px 12px;
+    border-bottom: 1px solid #ecf0f1;
+    font-size: 14px;
+  }
+  .tabela-precos tbody tr:hover {
+    background: #f8f9ff;
+  }
+  .tabela-precos .preco-hora {
+    color: #27ae60;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+  }
+  .tag-promo { background: #ff4757; }
+  .tag-novo { background: #2ed573; }
+  .tag-top { background: #ffa502; }
+
+  /* DESTAQUE */
+  .destaque-box {
+    background: linear-gradient(135deg, #fff5e6, #ffe6cc);
+    border-left: 6px solid #ffa500;
+    padding: 20px 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+  }
+  .destaque-box h4 {
+    color: #d35400;
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+  .destaque-box p {
+    color: #7f5a00;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* TABELA RESUMO */
+  .tabela-horas {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+    margin: 30px 0;
+    overflow-x: auto;
+  }
+  .tabela-horas table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+  }
+  .tabela-horas thead {
+    background: linear-gradient(135deg, #ff6b6b, #ffa500);
+    color: #fff;
+  }
+  .tabela-horas th {
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+  }
+  .tabela-horas td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ecf0f1;
+    font-size: 14px;
+  }
+  .tabela-horas tbody tr:nth-child(even) { background: #f8f9ff; }
+  .tabela-horas .tempo {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  .tabela-horas .desconto {
+    color: #27ae60;
+    font-weight: bold;
+  }
+
+  /* OBSERVAÇÕES */
+  .observacoes {
+    background: #fff9e6;
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 30px;
+    border-left: 5px solid #ffdd00;
+  }
+  .observacoes h3 {
+    color: #d35400;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+  .observacoes ul { padding-left: 20px; }
+  .observacoes li {
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px;
+    margin-top: 40px;
+  }
+  .cta h2 { font-size: 32px; margin-bottom: 15px; }
+  .cta p { font-size: 17px; margin-bottom: 25px; }
+  .btn {
+    display: inline-block;
+    background: #25d366;
+    color: #fff;
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 17px;
+    transition: 0.3s;
+    box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+  }
+  .btn:hover { transform: scale(1.05); }
+
+  /* FOOTER */
+  footer {
+    background: #2c3e50;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 35px 20px;
+    font-size: 14px;
+  }
+  footer h3 { margin-bottom: 15px; color: #ffdd00; }
+  footer p { margin-bottom: 6px; }
+
+  /* WHATSAPP */
+  .whatsapp {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #25d366;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(37,211,102,0.5);
+    z-index: 99;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  @media (max-width: 768px) {
+    header { flex-direction: column; gap: 10px; padding: 15px; }
+    nav a { margin: 0 8px; font-size: 12px; }
+    .hero h1 { font-size: 26px; }
+    .hero .aviso { font-size: 13px; padding: 10px 18px; }
+    .secao { padding: 25px 15px; }
+    .secao-titulo { font-size: 22px; }
+    .regras { padding: 20px; margin: -20px 15px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">🎪 Brinquedos & Festas</div>
+  <nav>
+    <a href="#pulapula">Pula-Pula</a>
+    <a href="#cama">Cama Elástica</a>
+    <a href="#gesso">Gesso</a>
+    <a href="#piscina">Piscina Bolinhas</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="ano">✨ CATÁLOGO 2026 ✨</div>
+  <h1>📋 Tabela de Preços 2026</h1>
+  <p>Valores de locação por hora — você escolhe quanto tempo quer o brinquedo!</p>
+  <div class="aviso">⏰ Mínimo 3 horas de locação</div>
+</section>
+
+<!-- REGRAS DE TEMPO -->
+<div class="regras">
+  <h2>💡 Como funciona o tempo de locação</h2>
+  <div class="regras-grid">
+    <div class="regra-item destaque">
+      <div class="icone">⏱️</div>
+      <h4>Mínimo: 3 horas</h4>
+      <p>O aluguel mínimo é de 3 horas para qualquer brinquedo</p>
+    </div>
+    <div class="regra-item">
+      <div class="icone">📈</div>
+      <h4>Quanto mais horas, mais vantagem</h4>
+      <p>Valores especiais para locações mais longas</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PULA-PULA ================= -->
+<section class="secao" id="pulapula">
+  <h2 class="secao-titulo">🎪 Pula-Pula Inflável</h2>
+  <p class="secao-subtitulo">Valores por tempo de uso — mínimo 3h</p>
+  <div class="secao-divisor"></div>
+
+  <div class="tabela-precos">
+    <table>
+      <thead>
+        <tr>
+          <th>Modelo</th>
+          <th>3 horas<br><small>mínimo</small></th>
+          <th>4 horas<br><small>-5%</small></th>
+          <th>5 horas<br><small>-7%</small></th>
+          <th>6 horas<br><small>-10%</small></th>
+          <th>7 horas<br><small>-12%</small></th>
+          <th>8 horas<br><small>-15%</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Bob Esponja Inflável</strong> <span class="tag tag-novo">NOVO</span><br><small>Temático | 4-10 anos</small></td>
+          <td class="preco-hora">R$ 450</td>
+          <td class="preco-hora">R$ 560</td>
+          <td class="preco-hora">R$ 650</td>
+          <td class="preco-hora">R$ 730</td>
+          <td class="preco-hora">R$ 810</td>
+          <td class="preco-hora">R$ 900</td>
+        </tr>
+        <tr>
+          <td><strong>Pula-Pula Inflável com Escorregador</strong> <span class="tag tag-promo">PROMO</span><br><small>5,0m | com escorrega</small></td>
+          <td class="preco-hora">R$ 550</td>
+          <td class="preco-hora">R$ 690</td>
+          <td class="preco-hora">R$ 790</td>
+          <td class="preco-hora">R$ 890</td>
+          <td class="preco-hora">R$ 1.000</td>
+          <td class="preco-hora">R$ 1.100</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="destaque-box">
+    <h4>💡 Exemplo prático:</h4>
+    <p>O <strong>Pula-Pula Inflável com Escorregador</strong> por 3h custa <strong>R$ 550</strong>. Se você quiser 6 horas, paga <strong>R$ 890</strong> — quanto mais tempo, mais barato por hora!</p>
+  </div>
+</section>
+
+<!-- ================= CAMA ELÁSTICA ================= -->
+<section class="secao" id="cama">
+  <h2 class="secao-titulo">🤸 Cama Elástica</h2>
+  <p class="secao-subtitulo">Com rede de proteção, colchão de borda e escada inclusos</p>
+  <div class="secao-divisor"></div>
+
+  <div class="tabela-precos">
+    <table>
+      <thead>
+        <tr>
+          <th>Modelo</th>
+          <th>3 horas<br><small>mínimo</small></th>
+          <th>4 horas<br><small>-5%</small></th>
+          <th>5 horas<br><small>-7%</small></th>
+          <th>6 horas<br><small>-10%</small></th>
+          <th>7 horas<br><small>-12%</small></th>
+          <th>8 horas<br><small>-15%</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Cama Elástica Family</strong> <span class="tag tag-promo">PROMO</span><br><small>3,0m | 3 crianças</small></td>
+          <td class="preco-hora">R$ 150</td>
+          <td class="preco-hora">R$ 190</td>
+          <td class="preco-hora">R$ 215</td>
+          <td class="preco-hora">R$ 245</td>
+          <td class="preco-hora">R$ 275</td>
+          <td class="preco-hora">R$ 305</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ================= GESSO ================= -->
+<section class="secao" id="gesso">
+  <h2 class="secao-titulo">🎨 Gesso (Pintura Criativa)</h2>
+  <p class="secao-subtitulo">Atividade artística — peças, tintas, pincéis e aventais inclusos</p>
+  <div class="secao-divisor"></div>
+
+  <div class="tabela-precos">
+    <table>
+      <thead>
+        <tr>
+          <th>Kit</th>
+          <th>3 horas<br><small>mínimo</small></th>
+          <th>4 horas<br><small>-5%</small></th>
+          <th>5 horas<br><small>-7%</small></th>
+          <th>6 horas<br><small>-10%</small></th>
+          <th>7 horas<br><small>-12%</small></th>
+          <th>8 horas<br><small>-15%</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Kit Básico</strong><br><small>10 peças | 6 cores</small></td>
+          <td class="preco-hora">R$ 80</td>
+          <td class="preco-hora">R$ 100</td>
+          <td class="preco-hora">R$ 115</td>
+          <td class="preco-hora">R$ 130</td>
+          <td class="preco-hora">R$ 145</td>
+          <td class="preco-hora">R$ 160</td>
+        </tr>
+        <tr>
+          <td><strong>Kit Infantil</strong><br><small>20 peças | 8 cores</small></td>
+          <td class="preco-hora">R$ 120</td>
+          <td class="preco-hora">R$ 150</td>
+          <td class="preco-hora">R$ 175</td>
+          <td class="preco-hora">R$ 195</td>
+          <td class="preco-hora">R$ 220</td>
+          <td class="preco-hora">R$ 245</td>
+        </tr>
+        <tr>
+          <td><strong>Kit Festa</strong> <span class="tag tag-promo">PROMO</span><br><small>30 peças | 12 cores</small></td>
+          <td class="preco-hora">R$ 165</td>
+          <td class="preco-hora">R$ 205</td>
+          <td class="preco-hora">R$ 240</td>
+          <td class="preco-hora">R$ 270</td>
+          <td class="preco-hora">R$ 300</td>
+          <td class="preco-hora">R$ 335</td>
+        </tr>
+        <tr>
+          <td><strong>Kit Premium</strong><br><small>50 peças | 16 cores</small></td>
+          <td class="preco-hora">R$ 250</td>
+          <td class="preco-hora">R$ 315</td>
+          <td class="preco-hora">R$ 365</td>
+          <td class="preco-hora">R$ 410</td>
+          <td class="preco-hora">R$ 460</td>
+          <td class="preco-hora">R$ 510</td>
+        </tr>
+        <tr>
+          <td><strong>Kit Mega Festa</strong> <span class="tag tag-top">TOP</span><br><small>100 peças | 24 cores</small></td>
+          <td class="preco-hora">R$ 430</td>
+          <td class="preco-hora">R$ 540</td>
+          <td class="preco-hora">R$ 625</td>
+          <td class="preco-hora">R$ 700</td>
+          <td class="preco-hora">R$ 790</td>
+          <td class="preco-hora">R$ 880</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ================= PISCINA DE BOLINHAS ================= -->
+<section class="secao" id="piscina">
+  <h2 class="secao-titulo">🎈 Piscina de Bolinhas</h2>
+  <p class="secao-subtitulo">Bolinhas atóxicas higienizadas + cerca de contenção + fundo acolchoado</p>
+  <div class="secao-divisor"></div>
+
+  <div class="tabela-precos">
+    <table>
+      <thead>
+        <tr>
+          <th>Modelo</th>
+          <th>3 horas<br><small>mínimo</small></th>
+          <th>4 horas<br><small>-5%</small></th>
+          <th>5 horas<br><small>-7%</small></th>
+          <th>6 horas<br><small>-10%</small></th>
+          <th>7 horas<br><small>-12%</small></th>
+          <th>8 horas<br><small>-15%</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Baby Pool</strong><br><small>1,5m | 200 bolinhas</small></td>
+          <td class="preco-hora">R$ 120</td>
+          <td class="preco-hora">R$ 150</td>
+          <td class="preco-hora">R$ 175</td>
+          <td class="preco-hora">R$ 195</td>
+          <td class="preco-hora">R$ 220</td>
+          <td class="preco-hora">R$ 245</td>
+        </tr>
+        <tr>
+          <td><strong>Kids Pool</strong><br><small>2,0m | 500 bolinhas</small></td>
+          <td class="preco-hora">R$ 180</td>
+          <td class="preco-hora">R$ 225</td>
+          <td class="preco-hora">R$ 260</td>
+          <td class="preco-hora">R$ 295</td>
+          <td class="preco-hora">R$ 330</td>
+          <td class="preco-hora">R$ 365</td>
+        </tr>
+        <tr>
+          <td><strong>Family Pool</strong> <span class="tag tag-promo">PROMO</span><br><small>3,0m | 1.000 bolinhas</small></td>
+          <td class="preco-hora">R$ 250</td>
+          <td class="preco-hora">R$ 315</td>
+          <td class="preco-hora">R$ 365</td>
+          <td class="preco-hora">R$ 410</td>
+          <td class="preco-hora">R$ 460</td>
+          <td class="preco-hora">R$ 510</td>
+        </tr>
+        <tr>
+          <td><strong>Premium Pool</strong><br><small>4,0m | 1.500 bolinhas</small></td>
+          <td class="preco-hora">R$ 340</td>
+          <td class="preco-hora">R$ 425</td>
+          <td class="preco-hora">R$ 490</td>
+          <td class="preco-hora">R$ 550</td>
+          <td class="preco-hora">R$ 620</td>
+          <td class="preco-hora">R$ 685</td>
+        </tr>
+        <tr>
+          <td><strong>Mega Pool</strong> <span class="tag tag-novo">NOVO</span><br><small>5,0m | 2.000 bolinhas</small></td>
+          <td class="preco-hora">R$ 430</td>
+          <td class="preco-hora">R$ 540</td>
+          <td class="preco-hora">R$ 625</td>
+          <td class="preco-hora">R$ 700</td>
+          <td class="preco-hora">R$ 790</td>
+          <td class="preco-hora">R$ 880</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ================= TABELA RESUMO ================= -->
+<section class="secao">
+  <h2 class="secao-titulo">📊 Tabela de Descontos</h2>
+  <p class="secao-subtitulo">Confira os valores por tempo de uso</p>
+  <div class="secao-divisor"></div>
+
+  <div class="tabela-horas">
+    <table>
+      <thead>
+        <tr>
+          <th>⏰ Tempo de Uso</th>
+          <th>💰 Desconto Aplicado</th>
+          <th>📈 Vantagem</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tempo">3 horas (mínimo)</td>
+          <td class="desconto">Preço cheio</td>
+          <td>Ideal para festas rápidas</td>
+        </tr>
+        <tr>
+          <td class="tempo">4 horas</td>
+          <td class="desconto">5% OFF</td>
+          <td>Economia inicial</td>
+        </tr>
+        <tr>
+          <td class="tempo">5 horas</td>
+          <td class="desconto">7% OFF</td>
+          <td>Bom custo-benefício</td>
+        </tr>
+        <tr>
+          <td class="tempo">6 horas</td>
+          <td class="desconto">10% OFF</td>
+          <td>Recomendado para festas</td>
+        </tr>
+        <tr>
+          <td class="tempo">7 horas</td>
+          <td class="desconto">12% OFF</td>
+          <td>Ótima economia</td>
+        </tr>
+        <tr>
+          <td class="tempo">8 horas</td>
+          <td class="desconto">15% OFF</td>
+          <td>Melhor preço/hora</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="destaque-box">
+    <h4>🎯 Como calcular:</h4>
+    <p>Basta multiplicar o <strong>valor base (3h)</strong> pela quantidade de horas e aplicar o desconto. Exemplo: Cama Elástica Family (R$ 150/3h) × 6 horas com 10% OFF = <strong>R$ 245</strong>.</p>
+  </div>
+</section>
+
+<!-- ================= OBSERVAÇÕES ================= -->
+<section class="secao">
+  <div class="observacoes">
+    <h3>📌 Observações Importantes sobre Locação</h3>
+    <ul>
+      <li><strong>Tempo mínimo:</strong> 3 horas para qualquer brinquedo.</li>
+      <li><strong>Descontos progressivos:</strong> quanto mais horas contratadas, menor o valor proporcional.</li>
+      <li><strong>Hora extra:</strong> caso ultrapasse o tempo contratado, cobramos R$ 60/hora adicional.</li>
+      <li><strong>Taxa de entrega:</strong> grátis para raio de 15km. Acima disso, consultar valor.</li>
+      <li><strong>Montagem e desmontagem:</strong> inclusa no valor para locações a partir de 4 horas.</li>
+      <li><strong>Formas de pagamento:</strong> PIX (5% desconto extra), cartão de crédito (até 3x sem juros) ou dinheiro.</li>
+      <li><strong>Reserva:</strong> garantida com 50% de sinal e assinatura de contrato.</li>
+      <li><strong>Cancelamento:</strong> com até 48h de antecedência, devolução de 100% do sinal.</li>
+      <li><strong>Segurança:</strong> todos os produtos possuem certificação INMETRO e seguro contra acidentes.</li>
+      <li><strong>Monitores:</strong> disponíveis por R$ 90,00/hora (recomendado para eventos com mais de 15 crianças).</li>
+      <li><strong>Período noturno:</strong> locações após 18h têm acréscimo de 20%.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contato">
+  <h2>📞 Faça sua Reserva Agora!</h2>
+  <p>Escolha o brinquedo, defina o tempo e entre em contato para garantir sua data em 2026</p>
+  <a href="https://wa.me/5500000000000" class="btn">💬 Falar no WhatsApp</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <h3>🎪 Brinquedos & Festas</h3>
+  <p>📞 (00) 00000-0000 | 📧 contato@brinquedosfestas.com.br</p>
+  <p>📍 Av. das Festas, 1000 - Sua Cidade/UF</p>
+  <p style="margin-top:15px; font-size:12px;">© 2026 Brinquedos & Festas - Todos os direitos reservados</p>
+  <p style="font-size:11px; color:#95a5a6; margin-top:5px;">*Preços 2026 sujeitos a alteração sem aviso prévio. Válido por 30 dias.</p>
+</footer>
+
+<!-- WHATSAPP FLUTUANTE -->
+<a href="https://wa.me/5500000000000" class="whatsapp">💬</a>
+
+</body>
+</html>
