@@ -168,6 +168,47 @@
     font-weight: bold;
     font-size: 16px;
   }
+
+  /* TABELA SIMPLES (VALOR FIXO) */
+  .tabela-simples {
+    width: 100%;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+    overflow-x: auto;
+  }
+  .tabela-simples table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+  }
+  .tabela-simples thead {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+  }
+  .tabela-simples th {
+    padding: 18px 15px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .tabela-simples td {
+    padding: 20px 15px;
+    border-bottom: 1px solid #ecf0f1;
+    font-size: 15px;
+    vertical-align: middle;
+  }
+  .tabela-simples tbody tr:hover {
+    background: #f8f9ff;
+  }
+  .tabela-simples .preco-fixo {
+    color: #27ae60;
+    font-weight: bold;
+    font-size: 22px;
+  }
+
   .tag {
     display: inline-block;
     padding: 3px 10px;
@@ -197,45 +238,6 @@
     color: #7f5a00;
     font-size: 14px;
     line-height: 1.6;
-  }
-
-  /* TABELA RESUMO */
-  .tabela-horas {
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 6px 25px rgba(0,0,0,0.08);
-    margin: 30px 0;
-    overflow-x: auto;
-  }
-  .tabela-horas table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 500px;
-  }
-  .tabela-horas thead {
-    background: linear-gradient(135deg, #ff6b6b, #ffa500);
-    color: #fff;
-  }
-  .tabela-horas th {
-    padding: 15px;
-    text-align: center;
-    font-size: 14px;
-  }
-  .tabela-horas td {
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #ecf0f1;
-    font-size: 14px;
-  }
-  .tabela-horas tbody tr:nth-child(even) { background: #f8f9ff; }
-  .tabela-horas .tempo {
-    font-weight: bold;
-    color: #2c3e50;
-  }
-  .tabela-horas .desconto {
-    color: #27ae60;
-    font-weight: bold;
   }
 
   /* OBSERVAÇÕES */
@@ -456,67 +458,33 @@
   <p class="secao-subtitulo">Atividade artística — peças, tintas, pincéis e aventais inclusos</p>
   <div class="secao-divisor"></div>
 
-  <div class="tabela-precos">
+  <div class="tabela-simples">
     <table>
       <thead>
         <tr>
           <th>Kit</th>
-          <th>3 horas<br><small>mínimo</small></th>
-          <th>4 horas<br><small>-5%</small></th>
-          <th>5 horas<br><small>-7%</small></th>
-          <th>6 horas<br><small>-10%</small></th>
-          <th>7 horas<br><small>-12%</small></th>
-          <th>8 horas<br><small>-15%</small></th>
+          <th>Descrição</th>
+          <th>Valor</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>Kit Básico</strong><br><small>10 peças | 6 cores</small></td>
-          <td class="preco-hora">R$ 80</td>
-          <td class="preco-hora">R$ 100</td>
-          <td class="preco-hora">R$ 115</td>
-          <td class="preco-hora">R$ 130</td>
-          <td class="preco-hora">R$ 145</td>
-          <td class="preco-hora">R$ 160</td>
+          <td><strong>Kit Premium</strong></td>
+          <td>50 peças</td>
+          <td class="preco-fixo">R$ 100,00</td>
         </tr>
         <tr>
-          <td><strong>Kit Infantil</strong><br><small>20 peças | 8 cores</small></td>
-          <td class="preco-hora">R$ 120</td>
-          <td class="preco-hora">R$ 150</td>
-          <td class="preco-hora">R$ 175</td>
-          <td class="preco-hora">R$ 195</td>
-          <td class="preco-hora">R$ 220</td>
-          <td class="preco-hora">R$ 245</td>
-        </tr>
-        <tr>
-          <td><strong>Kit Festa</strong> <span class="tag tag-promo">PROMO</span><br><small>30 peças | 12 cores</small></td>
-          <td class="preco-hora">R$ 165</td>
-          <td class="preco-hora">R$ 205</td>
-          <td class="preco-hora">R$ 240</td>
-          <td class="preco-hora">R$ 270</td>
-          <td class="preco-hora">R$ 300</td>
-          <td class="preco-hora">R$ 335</td>
-        </tr>
-        <tr>
-          <td><strong>Kit Premium</strong><br><small>50 peças | 16 cores</small></td>
-          <td class="preco-hora">R$ 250</td>
-          <td class="preco-hora">R$ 315</td>
-          <td class="preco-hora">R$ 365</td>
-          <td class="preco-hora">R$ 410</td>
-          <td class="preco-hora">R$ 460</td>
-          <td class="preco-hora">R$ 510</td>
-        </tr>
-        <tr>
-          <td><strong>Kit Mega Festa</strong> <span class="tag tag-top">TOP</span><br><small>100 peças | 24 cores</small></td>
-          <td class="preco-hora">R$ 430</td>
-          <td class="preco-hora">R$ 540</td>
-          <td class="preco-hora">R$ 625</td>
-          <td class="preco-hora">R$ 700</td>
-          <td class="preco-hora">R$ 790</td>
-          <td class="preco-hora">R$ 880</td>
+          <td><strong>Kit Mega Festa</strong> <span class="tag tag-top">TOP</span></td>
+          <td>100 peças</td>
+          <td class="preco-fixo">R$ 150,00</td>
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="destaque-box">
+    <h4>💡 Sobre a Oficina de Gesso:</h4>
+    <p>Valores fixos por kit, independente do tempo de evento. Ideal para complementar a festa com uma atividade criativa e divertida para as crianças!</p>
   </div>
 </section>
 
@@ -526,123 +494,28 @@
   <p class="secao-subtitulo">Bolinhas atóxicas higienizadas + cerca de contenção + fundo acolchoado</p>
   <div class="secao-divisor"></div>
 
-  <div class="tabela-precos">
+  <div class="tabela-simples">
     <table>
       <thead>
         <tr>
           <th>Modelo</th>
-          <th>3 horas<br><small>mínimo</small></th>
-          <th>4 horas<br><small>-5%</small></th>
-          <th>5 horas<br><small>-7%</small></th>
-          <th>6 horas<br><small>-10%</small></th>
-          <th>7 horas<br><small>-12%</small></th>
-          <th>8 horas<br><small>-15%</small></th>
+          <th>Descrição</th>
+          <th>Valor</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>Baby Pool</strong><br><small>1,5m | 200 bolinhas</small></td>
-          <td class="preco-hora">R$ 120</td>
-          <td class="preco-hora">R$ 150</td>
-          <td class="preco-hora">R$ 175</td>
-          <td class="preco-hora">R$ 195</td>
-          <td class="preco-hora">R$ 220</td>
-          <td class="preco-hora">R$ 245</td>
-        </tr>
-        <tr>
-          <td><strong>Kids Pool</strong><br><small>2,0m | 500 bolinhas</small></td>
-          <td class="preco-hora">R$ 180</td>
-          <td class="preco-hora">R$ 225</td>
-          <td class="preco-hora">R$ 260</td>
-          <td class="preco-hora">R$ 295</td>
-          <td class="preco-hora">R$ 330</td>
-          <td class="preco-hora">R$ 365</td>
-        </tr>
-        <tr>
-          <td><strong>Family Pool</strong> <span class="tag tag-promo">PROMO</span><br><small>3,0m | 1.000 bolinhas</small></td>
-          <td class="preco-hora">R$ 250</td>
-          <td class="preco-hora">R$ 315</td>
-          <td class="preco-hora">R$ 365</td>
-          <td class="preco-hora">R$ 410</td>
-          <td class="preco-hora">R$ 460</td>
-          <td class="preco-hora">R$ 510</td>
-        </tr>
-        <tr>
-          <td><strong>Premium Pool</strong><br><small>4,0m | 1.500 bolinhas</small></td>
-          <td class="preco-hora">R$ 340</td>
-          <td class="preco-hora">R$ 425</td>
-          <td class="preco-hora">R$ 490</td>
-          <td class="preco-hora">R$ 550</td>
-          <td class="preco-hora">R$ 620</td>
-          <td class="preco-hora">R$ 685</td>
-        </tr>
-        <tr>
-          <td><strong>Mega Pool</strong> <span class="tag tag-novo">NOVO</span><br><small>5,0m | 2.000 bolinhas</small></td>
-          <td class="preco-hora">R$ 430</td>
-          <td class="preco-hora">R$ 540</td>
-          <td class="preco-hora">R$ 625</td>
-          <td class="preco-hora">R$ 700</td>
-          <td class="preco-hora">R$ 790</td>
-          <td class="preco-hora">R$ 880</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- ================= TABELA RESUMO ================= -->
-<section class="secao">
-  <h2 class="secao-titulo">📊 Tabela de Descontos</h2>
-  <p class="secao-subtitulo">Confira os valores por tempo de uso</p>
-  <div class="secao-divisor"></div>
-
-  <div class="tabela-horas">
-    <table>
-      <thead>
-        <tr>
-          <th>⏰ Tempo de Uso</th>
-          <th>💰 Desconto Aplicado</th>
-          <th>📈 Vantagem</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="tempo">3 horas (mínimo)</td>
-          <td class="desconto">Preço cheio</td>
-          <td>Ideal para festas rápidas</td>
-        </tr>
-        <tr>
-          <td class="tempo">4 horas</td>
-          <td class="desconto">5% OFF</td>
-          <td>Economia inicial</td>
-        </tr>
-        <tr>
-          <td class="tempo">5 horas</td>
-          <td class="desconto">7% OFF</td>
-          <td>Bom custo-benefício</td>
-        </tr>
-        <tr>
-          <td class="tempo">6 horas</td>
-          <td class="desconto">10% OFF</td>
-          <td>Recomendado para festas</td>
-        </tr>
-        <tr>
-          <td class="tempo">7 horas</td>
-          <td class="desconto">12% OFF</td>
-          <td>Ótima economia</td>
-        </tr>
-        <tr>
-          <td class="tempo">8 horas</td>
-          <td class="desconto">15% OFF</td>
-          <td>Melhor preço/hora</td>
+          <td><strong>Kids Pool</strong></td>
+          <td>1m | 100 bolinhas</td>
+          <td class="preco-fixo">R$ 120,00</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <div class="destaque-box">
-    <h4>🎯 Como calcular:</h4>
-    <p>Basta multiplicar o <strong>valor base (3h)</strong> pela quantidade de horas e aplicar o desconto. Exemplo: Cama Elástica Family (R$ 150/3h) × 6 horas com 10% OFF = <strong>R$ 245</strong>.</p>
+    <h4>💡 Sobre a Piscina de Bolinhas:</h4>
+    <p>Valor fixo de <strong>R$ 120,00</strong> para o Kids Pool (1m | 100 bolinhas), independente do tempo de locação contratado!</p>
   </div>
 </section>
 
@@ -662,6 +535,8 @@
       <li><strong>Segurança:</strong> todos os produtos possuem certificação INMETRO e seguro contra acidentes.</li>
       <li><strong>Monitores:</strong> disponíveis por R$ 90,00/hora (recomendado para eventos com mais de 15 crianças).</li>
       <li><strong>Período noturno:</strong> locações após 18h têm acréscimo de 20%.</li>
+      <li><strong>Oficina de Gesso:</strong> valor fixo por kit, independente do tempo de evento.</li>
+      <li><strong>Piscina de Bolinhas:</strong> valor fixo de R$ 120,00 para o Kids Pool (1m | 100 bolinhas).</li>
     </ul>
   </div>
 </section>
