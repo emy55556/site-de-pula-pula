@@ -1,567 +1,1218 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo 2026 - Brinquedos para Festas</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #333; }
-  
-  /* HEADER */
-  header {
-    background: linear-gradient(135deg, #ff6b6b, #ffa500);
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  }
-  .logo { font-size: 24px; font-weight: bold; color: #fff; }
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 600;
-    font-size: 14px;
-  }
-  nav a:hover { color: #ffe600; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pablo Festas - Catálogo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-  /* HERO */
-  .hero {
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
-    color: #fff;
-    text-align: center;
-    padding: 60px 20px;
-    position: relative;
-  }
-  .hero .ano {
-    display: inline-block;
-    background: #ffdd00;
-    color: #333;
-    padding: 8px 25px;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  }
-  .hero h1 { font-size: 42px; margin-bottom: 15px; }
-  .hero p { font-size: 18px; margin-bottom: 25px; }
-  .hero .aviso {
-    display: inline-block;
-    background: rgba(255,255,255,0.25);
-    padding: 12px 25px;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 16px;
-    border: 2px solid #fff;
-  }
+        html {
+            scroll-behavior: smooth;
+        }
 
-  /* REGRAS DE TEMPO */
-  .regras {
-    background: #fff;
-    max-width: 1200px;
-    margin: -30px auto 30px;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    position: relative;
-    z-index: 10;
-  }
-  .regras h2 {
-    text-align: center;
-    color: #2c3e50;
-    font-size: 26px;
-    margin-bottom: 20px;
-  }
-  .regras-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-  }
-  .regra-item {
-    text-align: center;
-    padding: 25px;
-    border-radius: 15px;
-    background: #f8f9ff;
-    border: 2px dashed #4facfe;
-  }
-  .regra-item .icone { font-size: 40px; margin-bottom: 10px; }
-  .regra-item h4 { color: #4facfe; font-size: 16px; margin-bottom: 8px; }
-  .regra-item p { color: #666; font-size: 14px; line-height: 1.5; }
-  .regra-item.destaque { background: #fff5e6; border-color: #ffa500; }
-  .regra-item.destaque h4 { color: #d35400; }
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff9f0;
+            overflow-x: hidden;
+        }
 
-  /* SEÇÕES */
-  .secao {
-    padding: 40px;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  .secao-titulo {
-    font-size: 30px;
-    color: #2c3e50;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-  .secao-subtitulo {
-    color: #7f8c8d;
-    margin-bottom: 25px;
-    font-size: 15px;
-  }
-  .secao-divisor {
-    height: 4px;
-    width: 80px;
-    background: linear-gradient(90deg, #ff6b6b, #ffa500);
-    border-radius: 2px;
-    margin-bottom: 30px;
-  }
+        /* ========== HEADER / MENU ========== */
+        header {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffa751 50%, #ffe259 100%);
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(255, 107, 157, 0.3);
+        }
 
-  /* TABELAS */
-  .tabela-precos {
-    width: 100%;
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 6px 25px rgba(0,0,0,0.08);
-    margin-bottom: 25px;
-    overflow-x: auto;
-  }
-  .tabela-precos table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 700px;
-  }
-  .tabela-precos thead {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: #fff;
-  }
-  .tabela-precos th {
-    padding: 15px 12px;
-    text-align: left;
-    font-size: 13px;
-    font-weight: 600;
-  }
-  .tabela-precos th small {
-    display: block;
-    font-weight: normal;
-    font-size: 11px;
-    opacity: 0.85;
-    margin-top: 3px;
-  }
-  .tabela-precos td {
-    padding: 15px 12px;
-    border-bottom: 1px solid #ecf0f1;
-    font-size: 14px;
-  }
-  .tabela-precos tbody tr:hover {
-    background: #f8f9ff;
-  }
-  .tabela-precos .preco-hora {
-    color: #27ae60;
-    font-weight: bold;
-    font-size: 16px;
-  }
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
 
-  /* TABELA SIMPLES (VALOR FIXO) */
-  .tabela-simples {
-    width: 100%;
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 6px 25px rgba(0,0,0,0.08);
-    margin-bottom: 25px;
-    overflow-x: auto;
-  }
-  .tabela-simples table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 500px;
-  }
-  .tabela-simples thead {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: #fff;
-  }
-  .tabela-simples th {
-    padding: 18px 15px;
-    text-align: left;
-    font-size: 14px;
-    font-weight: 600;
-  }
-  .tabela-simples td {
-    padding: 20px 15px;
-    border-bottom: 1px solid #ecf0f1;
-    font-size: 15px;
-    vertical-align: middle;
-  }
-  .tabela-simples tbody tr:hover {
-    background: #f8f9ff;
-  }
-  .tabela-simples .preco-fixo {
-    color: #27ae60;
-    font-weight: bold;
-    font-size: 22px;
-  }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+        }
 
-  .tag {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 12px;
-    font-size: 11px;
-    font-weight: bold;
-    color: #fff;
-  }
-  .tag-promo { background: #ff4757; }
-  .tag-novo { background: #2ed573; }
-  .tag-top { background: #ffa502; }
+        .logo span {
+            font-size: 1.6rem;
+            animation: bounce 2s infinite;
+        }
 
-  /* DESTAQUE */
-  .destaque-box {
-    background: linear-gradient(135deg, #fff5e6, #ffe6cc);
-    border-left: 6px solid #ffa500;
-    padding: 20px 25px;
-    border-radius: 12px;
-    margin-bottom: 30px;
-  }
-  .destaque-box h4 {
-    color: #d35400;
-    font-size: 17px;
-    margin-bottom: 8px;
-  }
-  .destaque-box p {
-    color: #7f5a00;
-    font-size: 14px;
-    line-height: 1.6;
-  }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
 
-  /* OBSERVAÇÕES */
-  .observacoes {
-    background: #fff9e6;
-    border-radius: 15px;
-    padding: 25px;
-    margin-top: 30px;
-    border-left: 5px solid #ffdd00;
-  }
-  .observacoes h3 {
-    color: #d35400;
-    margin-bottom: 15px;
-    font-size: 20px;
-  }
-  .observacoes ul { padding-left: 20px; }
-  .observacoes li {
-    margin-bottom: 8px;
-    color: #555;
-    font-size: 14px;
-    line-height: 1.6;
-  }
+        /* Botão hambúrguer - visível só no mobile */
+        .menu-toggle {
+            display: none;
+            background: rgba(255,255,255,0.25);
+            border: none;
+            color: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
 
-  /* CTA */
-  .cta {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: #fff;
-    text-align: center;
-    padding: 60px 20px;
-    margin-top: 40px;
-  }
-  .cta h2 { font-size: 32px; margin-bottom: 15px; }
-  .cta p { font-size: 17px; margin-bottom: 25px; }
-  .btn {
-    display: inline-block;
-    background: #25d366;
-    color: #fff;
-    padding: 15px 40px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 17px;
-    transition: 0.3s;
-    box-shadow: 0 6px 20px rgba(37,211,102,0.4);
-  }
-  .btn:hover { transform: scale(1.05); }
+        .menu-toggle:active {
+            transform: scale(0.95);
+            background: rgba(255,255,255,0.4);
+        }
 
-  /* FOOTER */
-  footer {
-    background: #2c3e50;
-    color: #ecf0f1;
-    text-align: center;
-    padding: 35px 20px;
-    font-size: 14px;
-  }
-  footer h3 { margin-bottom: 15px; color: #ffdd00; }
-  footer p { margin-bottom: 6px; }
-  footer a {
-  text-decoration: none;
-  color: inherit;
-  }
-  /* WHATSAPP */
-  .whatsapp {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: #25d366;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    color: #fff;
-    text-decoration: none;
-    box-shadow: 0 6px 20px rgba(37,211,102,0.5);
-    z-index: 99;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-  }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.2rem;
+        }
 
-  @media (max-width: 768px) {
-    header { flex-direction: column; gap: 10px; padding: 15px; }
-    nav a { margin: 0 8px; font-size: 12px; }
-    .hero h1 { font-size: 26px; }
-    .hero .aviso { font-size: 13px; padding: 10px 18px; }
-    .secao { padding: 25px 15px; }
-    .secao-titulo { font-size: 22px; }
-    .regras { padding: 20px; margin: -20px 15px 20px; }
-  }
-</style>
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.25);
+            transform: scale(1.05);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            background: linear-gradient(135deg, #ffeef5 0%, #fff4e0 100%);
+            padding: 3rem 1.2rem 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🎈';
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            font-size: 2.5rem;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '🎉';
+            position: absolute;
+            bottom: 15%;
+            right: 8%;
+            font-size: 2.5rem;
+            opacity: 0.3;
+            animation: float 5s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+        }
+
+        .hero h1 {
+            font-size: 1.8rem;
+            color: #ff3d7f;
+            margin-bottom: 0.8rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 0 rgba(255, 167, 81, 0.2);
+            line-height: 1.25;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .badge {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.2);
+            font-weight: 600;
+            color: #ff3d7f;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+        }
+
+        /* ========== TÍTULOS DAS SEÇÕES ========== */
+        .titulo-catalogo {
+            text-align: center;
+            padding: 2.5rem 1.2rem 0.5rem;
+        }
+
+        .titulo-catalogo h2 {
+            font-size: 1.6rem;
+            color: #ff3d7f;
+            font-weight: 800;
+            display: inline-block;
+            position: relative;
+        }
+
+        .titulo-catalogo h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #ff6b9d, #ffa751);
+            border-radius: 5px;
+            margin: 0.6rem auto 0;
+        }
+
+        /* ========== CATÁLOGO / CARDS ========== */
+        .catalogo {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .card-pula {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-pula:active {
+            transform: scale(0.98);
+        }
+
+        .card-img {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 60%);
+        }
+
+        /* Cores das imagens */
+        .img-inflavel { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #43e97b 100%); }
+        .img-bob { background: linear-gradient(135deg, #ffe74c 0%, #fdcb02 100%); }
+        .img-cama { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .img-gesso-1 { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        .img-gesso-2 { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
+        .img-bolinha-1 { background: linear-gradient(135deg, #ff6b9d 0%, #ffa751 100%); }
+        .img-pipoca { background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%); }
+        .img-algodao { background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%); }
+        .img-combo { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
+
+        .tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #ff3d7f;
+            color: white;
+            padding: 0.35rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(255, 61, 127, 0.4);
+        }
+
+        .tag.promo {
+            background: #4caf50;
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4);
+        }
+
+        .card-body {
+            padding: 1.2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-body h3 {
+            color: #333;
+            font-size: 1.15rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .card-body .desc {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 0.9rem;
+            flex-grow: 1;
+        }
+
+        .preco {
+            display: flex;
+            align-items: baseline;
+            gap: 0.3rem;
+            margin-bottom: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .preco .valor {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ff3d7f;
+        }
+
+        .preco .periodo {
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        .preco .antigo {
+            text-decoration: line-through;
+            color: #bbb;
+            font-size: 0.9rem;
+            margin-right: 0.4rem;
+        }
+
+        /* Botão maior e mais fácil de tocar */
+        .btn-card {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #ff6b9d, #ffa751);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-height: 50px;
+        }
+
+        .btn-card:active {
+            transform: scale(0.97);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.5);
+        }
+
+        /* ========== DIVISORES DE SEÇÃO ========== */
+        .divisor-secao {
+            max-width: 1300px;
+            margin: 2rem auto 0;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .divisor-secao::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            right: 5%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff6b9d, #ffa751, transparent);
+            z-index: 0;
+        }
+
+        .divisor-secao h2 {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b9d, #ffa751);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+            line-height: 1.3;
+        }
+
+        .divisor-secao p {
+            margin-top: 0.8rem;
+            color: #777;
+            font-size: 0.9rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ========== MODAL ========== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 0;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal {
+            background: white;
+            border-radius: 25px 25px 0 0;
+            width: 100%;
+            max-width: 500px;
+            max-height: 92vh;
+            overflow-y: auto;
+            animation: slideUpMobile 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes slideUpMobile {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        /* Alça de arrastar (visual mobile) */
+        .modal::before {
+            content: '';
+            display: block;
+            width: 45px;
+            height: 5px;
+            background: #ddd;
+            border-radius: 5px;
+            margin: 0.8rem auto 0;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #ff6b9d, #ffa751);
+            color: white;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.8rem;
+        }
+
+        .modal-header h3 {
+            font-size: 1.2rem;
+        }
+
+        .close-btn {
+            background: rgba(255,255,255,0.3);
+            border: none;
+            color: white;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .close-btn:active {
+            transform: scale(0.9);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            color: #444;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 16px; /* 16px evita zoom automático no iOS */
+            font-family: inherit;
+            transition: border-color 0.3s;
+            background: #fafafa;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b9d;
+            background: white;
+        }
+
+        .btn-confirmar {
+            width: 100%;
+            padding: 1.1rem;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-height: 52px;
+        }
+
+        .btn-confirmar:active {
+            transform: scale(0.98);
+        }
+
+        /* ========== WHATSAPP FLUTUANTE ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 18px;
+            right: 18px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+            text-decoration: none;
+            z-index: 999;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:active {
+            transform: scale(0.9);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5); }
+            50% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.8), 0 0 0 12px rgba(37, 211, 102, 0.1); }
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: linear-gradient(135deg, #ff6b9d, #ffa751);
+            color: white;
+            text-align: center;
+            padding: 2rem 1.2rem 1.2rem;
+            margin-top: 2.5rem;
+        }
+
+        footer .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        footer h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        footer p, footer a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1rem;
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        /* ========== MENU MOBILE ========== */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 62px;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #ff6b9d 0%, #ffa751 50%, #ffe259 100%);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0.5rem;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+                transform: translateY(-120%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 0.9rem 1rem;
+                font-size: 1rem;
+                border-radius: 12px;
+                text-align: center;
+                background: rgba(255,255,255,0.15);
+            }
+
+            .nav-links a:active {
+                background: rgba(255,255,255,0.35);
+                transform: scale(0.98);
+            }
+        }
+
+        /* ========== TABLET ========== */
+        @media (min-width: 600px) {
+            .catalogo {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            footer .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                text-align: left;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+        }
+
+        /* ========== DESKTOP ========== */
+        @media (min-width: 900px) {
+            .catalogo {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                padding: 2rem;
+                gap: 2rem;
+            }
+
+            header {
+                padding: 1rem 0;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .logo span {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 5rem 2rem 4rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero::before, .hero::after {
+                font-size: 4rem;
+            }
+
+            .titulo-catalogo {
+                padding: 3rem 2rem 1rem;
+            }
+
+            .titulo-catalogo h2 {
+                font-size: 2.5rem;
+            }
+
+            .titulo-catalogo h2::after {
+                width: 80px;
+                height: 5px;
+            }
+
+            .divisor-secao {
+                margin: 3rem auto 0;
+                padding: 2rem;
+            }
+
+            .divisor-secao h2 {
+                font-size: 1.8rem;
+                padding: 1rem 3rem;
+            }
+
+            .divisor-secao p {
+                font-size: 1.05rem;
+            }
+
+            .card-pula:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(255, 107, 157, 0.25);
+            }
+
+            .card-img {
+                height: 220px;
+                font-size: 6rem;
+            }
+
+            .card-body {
+                padding: 1.5rem;
+            }
+
+            .card-body h3 {
+                font-size: 1.3rem;
+            }
+
+            .preco .valor {
+                font-size: 1.8rem;
+            }
+
+            .btn-card {
+                padding: 0.9rem;
+                min-height: auto;
+            }
+
+            .btn-card:hover {
+                transform: scale(1.03);
+                box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
+            }
+
+            footer {
+                padding: 3rem 2rem 1.5rem;
+            }
+
+            footer .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 2rem;
+                text-align: left;
+            }
+
+            footer h4 {
+                font-size: 1.1rem;
+            }
+
+            footer p, footer a {
+                font-size: 0.9rem;
+            }
+
+            /* Modal volta ao centro no desktop */
+            .modal-overlay {
+                align-items: center;
+                padding: 1rem;
+            }
+
+            .modal {
+                border-radius: 25px;
+                animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+
+            .modal::before {
+                display: none;
+            }
+
+            .modal-header {
+                border-radius: 25px 25px 0 0;
+                margin-top: 0;
+                padding: 1.5rem;
+            }
+
+            @keyframes slideUp {
+                from { transform: translateY(50px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+
+            .modal-body {
+                padding: 2rem;
+            }
+
+            .whatsapp-float {
+                bottom: 25px;
+                right: 25px;
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+        }
+
+        /* ========== AJUSTES FINOS MOBILE ========== */
+        @media (max-width: 380px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo span {
+                font-size: 1.4rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .divisor-secao h2 {
+                font-size: 1rem;
+                padding: 0.7rem 1.2rem;
+            }
+
+            .badge {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .whatsapp-float {
+                width: 52px;
+                height: 52px;
+                font-size: 1.5rem;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="logo">🎪 Brinquedos & Festas</div>
-  <nav>
-    <a href="#pulapula">Pula-Pula</a>
-    <a href="#cama">Cama Elástica</a>
-    <a href="#gesso">Gesso</a>
-    <a href="#piscina">Piscina Bolinhas</a>
-    <a href="#contato">Contato</a>
-  </nav>
-</header>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <span>🎪</span> Pablo Festas
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#catalogo" onclick="fecharMenu()">Pula-Pula</a></li>
+                <li><a href="#gesso" onclick="fecharMenu()">Gesso</a></li>
+                <li><a href="#bolinhas" onclick="fecharMenu()">Bolinhas</a></li>
+                <li><a href="#doces" onclick="fecharMenu()">Pipoca</a></li>
+                <li><a href="#contato" onclick="fecharMenu()">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="ano">✨ CATÁLOGO 2026 ✨</div>
-  <h1>📋 Tabela de Preços 2026</h1>
-  <p>Valores de locação por hora — você escolhe quanto tempo quer o brinquedo!</p>
-  <div class="aviso">⏰ Mínimo 3 horas de locação</div>
-</section>
+    <!-- Hero -->
+    <section class="hero">
+        <h1>🎉 Alugue o Pula-Pula Perfeito!</h1>
+        <p>Diversão garantida para festas e eventos. Entrega e montagem inclusas!</p>
+        <div class="hero-badges">
+            <div class="badge">🚚 Entrega Grátis</div>
+            <div class="badge">🛡️ Higienizado</div>
+            <div class="badge">⏰ Locação por Dia</div>
+        </div>
+    </section>
 
-<!-- REGRAS DE TEMPO -->
-<div class="regras">
-  <h2>💡 Como funciona o tempo de locação</h2>
-  <div class="regras-grid">
-    <div class="regra-item destaque">
-      <div class="icone">⏱️</div>
-      <h4>Mínimo: 3 horas</h4>
-      <p>O aluguel mínimo é de 3 horas para qualquer brinquedo</p>
+    <!-- Título Catálogo Pula-Pula -->
+    <div class="titulo-catalogo" id="catalogo">
+        <h2>📋 Catálogo de Pula-Pula</h2>
     </div>
-    <div class="regra-item">
-      <div class="icone">📈</div>
-      <h4>Quanto mais horas, mais vantagem</h4>
-      <p>Valores especiais para locações mais longas</p>
+
+    <!-- Catálogo Pula-Pula -->
+    <div class="catalogo">
+
+        <div class="card-pula">
+            <div class="card-img img-inflavel">🎢</div>
+            <div class="card-body">
+                <h3>Inflável Escorregador</h3>
+                <p class="desc">Inflável com escorregador gigante, perfeito para festas e eventos.</p>
+                <div class="preco">
+                    <span class="valor">R$ 550</span>
+                </div>
+                <button class="btn-card" onclick="abrirModal('Inflável Escorregador', 'R$ 550')">🎈 Reservar</button>
+            </div>
+        </div>
+
+        <div class="card-pula">
+            <div class="card-img img-bob">🧽</div>
+            <div class="card-body">
+                <h3>Inflável Bob Esponja</h3>
+                <p class="desc">Inflável temático do Bob Esponja, diversão garantida para os pequenos!</p>
+                <div class="preco">
+                    <span class="valor">R$ 450</span>
+                </div>
+                <button class="btn-card" onclick="abrirModal('Inflável Bob Esponja', 'R$ 450')">🎈 Reservar</button>
+            </div>
+        </div>
+
+        <div class="card-pula">
+            <div class="card-img img-cama">🤸</div>
+            <div class="card-body">
+                <h3>Cama Elástica</h3>
+                <p class="desc">Cama elástica segura e divertida, ideal para todas as festas!</p>
+                <div class="preco">
+                    <span class="valor">R$ 150</span>
+                </div>
+                <button class="btn-card" onclick="abrirModal('Cama Elástica', 'R$ 150')">🎈 Reservar</button>
+            </div>
+        </div>
+
     </div>
-  </div>
-</div>
 
-<!-- ================= PULA-PULA ================= -->
-<section class="secao" id="pulapula">
-  <h2 class="secao-titulo">🎪 Pula-Pula Inflável</h2>
-  <p class="secao-subtitulo">Valores por tempo de uso — mínimo 3h</p>
-  <div class="secao-divisor"></div>
+    <!-- GESSO -->
+    <div class="divisor-secao" id="gesso">
+        <h2>🎨 Catálogo de Gesso</h2>
+        <p>Peças de gesso para pintura - diversão criativa!</p>
+    </div>
 
-  <div class="tabela-precos">
-    <table>
-      <thead>
-        <tr>
-          <th>Modelo</th>
-          <th>3 horas<br><small>mínimo</small></th>
-          <th>4 horas<br><small>-5%</small></th>
-          <th>5 horas<br><small>-7%</small></th>
-          <th>6 horas<br><small>-10%</small></th>
-          <th>7 horas<br><small>-12%</small></th>
-          <th>8 horas<br><small>-15%</small></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Bob Esponja Inflável</strong> <span class="tag tag-novo">NOVO</span><br><small>Temático | 4-10 anos</small></td>
-          <td class="preco-hora">R$ 450</td>
-          <td class="preco-hora">R$ 560</td>
-          <td class="preco-hora">R$ 650</td>
-          <td class="preco-hora">R$ 730</td>
-          <td class="preco-hora">R$ 810</td>
-          <td class="preco-hora">R$ 900</td>
-        </tr>
-        <tr>
-          <td><strong>Pula-Pula Inflável com Escorregador</strong> <span class="tag tag-promo">PROMO</span><br><small>5,0m | com escorrega</small></td>
-          <td class="preco-hora">R$ 550</td>
-          <td class="preco-hora">R$ 690</td>
-          <td class="preco-hora">R$ 790</td>
-          <td class="preco-hora">R$ 890</td>
-          <td class="preco-hora">R$ 1.000</td>
-          <td class="preco-hora">R$ 1.100</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="catalogo">
 
-  <div class="destaque-box">
-    <h4>💡 Exemplo prático:</h4>
-    <p>O <strong>Pula-Pula Inflável com Escorregador</strong> por 3h custa <strong>R$ 550</strong>. Se você quiser 6 horas, paga <strong>R$ 890</strong> — quanto mais tempo, mais barato por hora!</p>
-  </div>
-</section>
+        <div class="card-pula">
+            <div class="card-img img-gesso-1">🦋</div>
+            <div class="card-body">
+                <h3>100 Gessos Divertidos</h3>
+                <p class="desc">Kit com 100 peças variadas de gesso + tintas inclusas!</p>
+                <div class="preco">
+                    <span class="valor">R$ 150</span>
+                </div>
+                <button class="btn-card" onclick="abrirModal('100 Gessos Divertidos', 'R$ 150')">🎨 Reservar</button>
+            </div>
+        </div>
 
-<!-- ================= CAMA ELÁSTICA ================= -->
-<section class="secao" id="cama">
-  <h2 class="secao-titulo">🤸 Cama Elástica</h2>
-  <p class="secao-subtitulo">Com rede de proteção, colchão de borda e escada inclusos</p>
-  <div class="secao-divisor"></div>
+        <div class="card-pula">
+            <div class="card-img img-gesso-2">⭐</div>
+            <div class="card-body">
+                <h3>50 Gessos Divertidos</h3>
+                <p class="desc">Kit com 50 peças variadas de gesso + tintas inclusas!</p>
+                <div class="preco">
+                    <span class="valor">R$ 100</span>
+                </div>
+                <button class="btn-card" onclick="abrirModal('50 Gessos Divertidos', 'R$ 100')">🎨 Reservar</button>
+            </div>
+        </div>
 
-  <div class="tabela-precos">
-    <table>
-      <thead>
-        <tr>
-          <th>Modelo</th>
-          <th>3 horas<br><small>mínimo</small></th>
-          <th>4 horas<br><small>-5%</small></th>
-          <th>5 horas<br><small>-7%</small></th>
-          <th>6 horas<br><small>-10%</small></th>
-          <th>7 horas<br><small>-12%</small></th>
-          <th>8 horas<br><small>-15%</small></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Cama Elástica Family</strong> <span class="tag tag-promo">PROMO</span><br><small>3,0m | 3 crianças</small></td>
-          <td class="preco-hora">R$ 150</td>
-          <td class="preco-hora">R$ 190</td>
-          <td class="preco-hora">R$ 215</td>
-          <td class="preco-hora">R$ 245</td>
-          <td class="preco-hora">R$ 275</td>
-          <td class="preco-hora">R$ 305</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
+    </div>
 
-<!-- ================= GESSO ================= -->
-<section class="secao" id="gesso">
-  <h2 class="secao-titulo">🎨 Gesso (Pintura Criativa)</h2>
-  <p class="secao-subtitulo">Atividade artística — peças, tintas, pincéis e aventais inclusos</p>
-  <div class="secao-divisor"></div>
+    <!-- PISCINA DE BOLINHAS -->
+    <div class="divisor-secao" id="bolinhas">
+        <h2>🔴 Catálogo de Piscina de Bolinhas</h2>
+        <p>Piscinas de bolinhas coloridas - diversão garantida!</p>
+    </div>
 
-  <div class="tabela-simples">
-    <table>
-      <thead>
-        <tr>
-          <th>Kit</th>
-          <th>Descrição</th>
-          <th>Valor</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Kit Premium</strong></td>
-          <td>50 peças</td>
-          <td class="preco-fixo">R$ 100,00</td>
-        </tr>
-        <tr>
-          <td><strong>Kit Mega Festa</strong> <span class="tag tag-top">TOP</span></td>
-          <td>100 peças</td>
-          <td class="preco-fixo">R$ 150,00</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="catalogo">
 
-  <div class="destaque-box">
-    <h4>💡 Sobre a Oficina de Gesso:</h4>
-    <p>Valores fixos por kit, independente do tempo de evento. Ideal para complementar a festa com uma atividade criativa e divertida para as crianças!</p>
-  </div>
-</section>
+        <div class="card-pula">
+            <div class="card-img img-bolinha-1">🔴</div>
+            <div class="card-body">
+                <h3>Piscina de Bolinhas</h3>
+                <p class="desc">Piscina com 100 bolinhas coloridas, ideal para festas!</p>
+                <div class="preco">
+                    <span class="valor">R$ 120</span>
+                </div>
+                <button class="btn-card" onclick="abrirModal('Piscina de Bolinhas', 'R$ 120')">🔴 Reservar</button>
+            </div>
+        </div>
 
-<!-- ================= PISCINA DE BOLINHAS ================= -->
-<section class="secao" id="piscina">
-  <h2 class="secao-titulo">🎈 Piscina de Bolinhas</h2>
-  <p class="secao-subtitulo">Bolinhas atóxicas higienizadas + cerca de contenção + fundo acolchoado</p>
-  <div class="secao-divisor"></div>
+    </div>
 
-  <div class="tabela-simples">
-    <table>
-      <thead>
-        <tr>
-          <th>Modelo</th>
-          <th>Descrição</th>
-          <th>Valor</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Kids Pool</strong></td>
-          <td>1m | 100 bolinhas</td>
-          <td class="preco-fixo">R$ 120,00</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <!-- PIPOCA E ALGODÃO DOCE -->
+    <div class="divisor-secao" id="doces">
+        <h2>🍿 Catálogo de Pipoca e Algodão Doce</h2>
+        <p>Delícias para sua festa!</p>
+    </div>
 
-  <div class="destaque-box">
-    <h4>💡 Sobre a Piscina de Bolinhas:</h4>
-    <p>Valor fixo de <strong>R$ 120,00</strong> para o Kids Pool (1m | 100 bolinhas), independente do tempo de locação contratado!</p>
-  </div>
-</section>
+    <div class="catalogo">
 
-<!-- ================= OBSERVAÇÕES ================= -->
-<section class="secao">
-  <div class="observacoes">
-    <h3>📌 Observações Importantes sobre Locação</h3>
-    <ul>
-      <!-- <li><strong>Tempo mínimo:</strong> 3 horas para qualquer brinquedo.</li>
-      <li><strong>Descontos progressivos:</strong> quanto mais horas contratadas, menor o valor proporcional.</li>
-      <li><strong>Hora extra:</strong> caso ultrapasse o tempo contratado, cobramos R$ 60/hora adicional.</li>
-      <li><strong>Taxa de entrega:</strong> grátis para raio de 15km. Acima disso, consultar valor.</li>
-      <li><strong>Montagem e desmontagem:</strong> inclusa no valor para locações a partir de 4 horas.</li>
-      <li><strong>Formas de pagamento:</strong> PIX (5% desconto extra), cartão de crédito (até 3x sem juros) ou dinheiro.</li> -->
-      <li><strong>Reserva:</strong> garantida com 50% de sinal e assinatura de contrato.</li>
-      <li><strong>Cancelamento:</strong> com até 48h de antecedência, devolução de 100% do sinal.</li>
-      <li><strong>Segurança:</strong> todos os produtos possuem certificação INMETRO e seguro contra acidentes.</li>
-      <!-- <li><strong>Monitores:</strong> disponíveis por R$ 90,00/hora (recomendado para eventos com mais de 15 crianças).</li>
-      <li><strong>Período noturno:</strong> locações após 18h têm acréscimo de 20%.</li>
-      <li><strong>Oficina de Gesso:</strong> valor fixo por kit, independente do tempo de evento.</li>
-      <li><strong>Piscina de Bolinhas:</strong> valor fixo de R$ 120,00 para o Kids Pool (1m | 100 bolinhas).</li> -->
-    </ul>
-  </div>
-</section>
+        <div class="card-pula">
+            <div class="card-img img-pipoca">🍿</div>
+            <div class="card-body">
+                <h3>Pipoca</h3>
+                <p class="desc">Pipoca fresquinha e deliciosa para sua festa!</p>
+                <div class="preco">
+                    <span class="valor">R$ 1</span>
+                    <span class="periodo">a unidade</span>
+                </div>
+                <button class="btn-card" onclick="abrirModal('Pipoca', 'R$ 1 a unidade')">🍿 Reservar</button>
+            </div>
+        </div>
 
-<!-- CTA -->
-<section class="cta" id="contato">
-  <h2>📞 Faça sua Reserva Agora!</h2>
-  <p>Escolha o brinquedo, defina o tempo e entre em contato para garantir sua data em 2026</p>
-  <a href="https://wa.me/5585996707512" class="btn">💬 Falar no WhatsApp</a>
-</section>
+        <div class="card-pula">
+            <div class="card-img img-algodao">🍭</div>
+            <div class="card-body">
+                <h3>Algodão Doce</h3>
+                <p class="desc">Algodão doce colorido e delicioso para a criançada!</p>
+                <div class="preco">
+                    <span class="valor">R$ 1</span>
+                    <span class="periodo">a unidade</span>
+                </div>
+                <button class="btn-card" onclick="abrirModal('Algodão Doce', 'R$ 1 a unidade')">🍭 Reservar</button>
+            </div>
+        </div>
 
-<!-- FOOTER -->
-<footer>
-  <h3>🎪 Pablo Festas</h3>
-  <p>📞 (85) 99670-7512 | <a style="text-decoration: none;" href="https://instagram.com/pablo.festas" target=_blank>@pablo.festas</a></p>
-  <p>📍 Rua Dom Quintino, 338 - Fortaleza/CE</p>
-  <p style="margin-top:15px; font-size:12px;">© 2026 Pablo Festas - Todos os direitos reservados</p>
-  <p style="font-size:11px; color:#95a5a6; margin-top:5px;">*Preços 2026 sujeitos a alteração sem aviso prévio.</p>
-</footer>
+        <div class="card-pula">
+            <div class="card-img img-combo">
+                <span class="tag promo">COMBO</span>
+                🎁
+            </div>
+            <div class="card-body">
+                <h3>Kit Festa</h3>
+                <p class="desc">100 pipocas + 100 algodões doces + cama elástica!</p>
+                <div class="preco">
+                    <span class="valor">R$ 350</span>
+                </div>
+                <button class="btn-card" onclick="abrirModal('Kit Festa', 'R$ 350')">🎁 Reservar</button>
+            </div>
+        </div>
 
-<!-- WHATSAPP FLUTUANTE -->
-<a href="https://wa.me/5585996707512" class="whatsapp">💬</a>
+    </div>
 
+    <!-- Modal de Reserva -->
+    <div class="modal-overlay" id="modalReserva" onclick="fecharModalFora(event)">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>🎈 Reservar Item</h3>
+                <button class="close-btn" onclick="fecharModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="confirmarReserva(event)">
+                    <div class="form-group">
+                        <label>Item Selecionado</label>
+                        <input type="text" id="pulaSelecionado" readonly style="background:#f9f9f9;">
+                    </div>
+                    <div class="form-group">
+                        <label>Seu Nome</label>
+                        <input type="text" id="nomeCliente" required placeholder="Digite seu nome completo">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone / WhatsApp</label>
+                        <input type="tel" id="telefone" required placeholder="(00) 00000-0000" inputmode="tel">
+                    </div>
+                    <div class="form-group">
+                        <label>Data do Evento</label>
+                        <input type="date" id="dataEvento" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Endereço de Entrega</label>
+                        <input type="text" id="endereco" required placeholder="Rua, número, bairro">
+                    </div>
+                    <div class="form-group">
+                        <label>Observações (opcional)</label>
+                        <textarea id="obs" rows="3" placeholder="Alguma informação adicional?"></textarea>
+                    </div>
+                    <button type="submit" class="btn-confirmar">
+                        💬 Enviar pelo WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5511999999999?text=Olá! Gostaria de informações sobre os produtos da Pablo Festas" 
+       class="whatsapp-float" target="_blank" title="Fale conosco">
+        💬
+    </a>
+
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="footer-content">
+            <div>
+                <h4>🎪 Pablo Festas</h4>
+                <p>Diversão garantida para sua festa!</p>
+            </div>
+            <div>
+                <h4>📞 Contato</h4>
+                <p>WhatsApp: (11) 99999-9999</p>
+                <p>Email: contato@pablofestas.com</p>
+            </div>
+            <div>
+                <h4>🕐 Atendimento</h4>
+                <p>Segunda a Domingo</p>
+                <p>8h às 20h</p>
+            </div>
+            <div>
+                <h4>📍 Área de Atendimento</h4>
+                <p>São Paulo e Região</p>
+                <p>Consulte outras áreas</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Pablo Festas. Todos os direitos reservados. 🎈
+        </div>
+    </footer>
+
+    <script>
+        // ===== MENU MOBILE =====
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        function fecharMenu() {
+            document.getElementById('navLinks').classList.remove('active');
+        }
+
+        // Fecha o menu ao clicar fora
+        document.addEventListener('click', function(e) {
+            const nav = document.getElementById('navLinks');
+            const toggle = document.querySelector('.menu-toggle');
+            if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                nav.classList.remove('active');
+            }
+        });
+
+        // ===== MODAL =====
+        const modal = document.getElementById('modalReserva');
+        const pulaInput = document.getElementById('pulaSelecionado');
+
+        function abrirModal(nome, preco) {
+            pulaInput.value = `${nome} - ${preco}`;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fecharModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function fecharModalFora(e) {
+            if (e.target === modal) fecharModal();
+        }
+
+        // ===== DATA MÍNIMA = HOJE =====
+        const dataInput = document.getElementById('dataEvento');
+        const hoje = new Date().toISOString().split('T')[0];
+        dataInput.min = hoje;
+
+        // ===== MÁSCARA TELEFONE =====
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let v = e.target.value.replace(/\D/g, '');
+            if (v.length > 11) v = v.slice(0, 11);
+            if (v.length > 10) {
+                v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+            } else if (v.length > 6) {
+                v = `(${v.slice(0,2)}) ${v.slice(2,6)}-${v.slice(6)}`;
+            } else if (v.length > 2) {
+                v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+            } else if (v.length > 0) {
+                v = `(${v}`;
+            }
+            e.target.value = v;
+        });
+
+        // ===== CONFIRMAR RESERVA =====
+        function confirmarReserva(e) {
+            e.preventDefault();
+
+            const pula = pulaInput.value;
+            const nome = document.getElementById('nomeCliente').value;
+            const telefone = document.getElementById('telefone').value;
+            const data = document.getElementById('dataEvento').value;
+            const endereco = document.getElementById('endereco').value;
+            const obs = document.getElementById('obs').value;
+
+            const dataFormatada = new Date(data + 'T00:00:00').toLocaleDateString('pt-BR');
+
+            const mensagem = `*🎈 Nova Reserva - Pablo Festas*%0A%0A` +
+                `*Item:* ${pula}%0A` +
+                `*Nome:* ${nome}%0A` +
+                `*Telefone:* ${telefone}%0A` +
+                `*Data do Evento:* ${dataFormatada}%0A` +
+                `*Endereço:* ${endereco}%0A` +
+                (obs ? `*Observações:* ${obs}%0A` : '') +
+                `%0A_Aguardo confirmação!_ 🎉`;
+
+            const numeroWhats = '5511999999999';
+            const url = `https://wa.me/${numeroWhats}?text=${mensagem}`;
+
+            window.open(url, '_blank');
+            fecharModal();
+            e.target.reset();
+        }
+
+        // ===== ANIMAÇÃO DE ENTRADA =====
+        const cards = document.querySelectorAll('.card-pula');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
