@@ -595,6 +595,27 @@
             line-height: 1.7;
         }
 
+        /* Corrigir cor dos links do footer (incluindo visitados) */
+footer a,
+footer a:link,
+footer a:visited,
+footer a:hover,
+footer a:active,
+footer a:focus {
+    color: rgba(255,255,255,0.95);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+footer a:visited {
+    color: rgba(255,255,255,0.95);
+}
+
         .copyright {
             border-top: 1px solid rgba(255,255,255,0.2);
             padding-top: 1rem;
@@ -1141,8 +1162,8 @@
             </div>
             <div>
                 <h4>📞 Contato</h4>
-                <p>WhatsApp: <a href="https://wa.me/5585996707512">(85) 996707512</a></p>
-                <p>Instagram: <a href="https://instagram.com/pablo.festas">@pablo.festas</a></p>
+                <p>WhatsApp: <a href="https://wa.me/5585996707512" target="_blank">(85) 996707512</a></p>
+                <p>Instagram: <a href="https://instagram.com/pablo.festas" target="_blank">@pablo.festas</a></p>
             </div>
             <div>
                 <h4>🕐 Atendimento</h4>
